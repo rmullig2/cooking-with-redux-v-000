@@ -29,7 +29,7 @@ describe('addIngredients', () => {
 
   it('displays an addIngredient component for each ingredient', () => {
     let store = configureStore()
-
+    
     let selectedIngredients = [{id: 1, name: 'dough'},
       {id: 2, name: 'tomato sauce'}]
     let unselectedIngredients = [{id: 3, name: 'cheese'}]
@@ -73,7 +73,6 @@ describe('addIngredients with Recipe', () => {
         </Provider>
       )
 
-      console.log(store.getState().recipeForm)
       let WrapperConnectedRecipesInput = wrapper.find(ConnectedRecipesInput).first()
       let WrapperRecipesInput = wrapper.find(RecipesInput).first()
       let recipeNameInput = wrapper.find('input').first()
@@ -82,6 +81,7 @@ describe('addIngredients with Recipe', () => {
       form.simulate('submit',  { preventDefault() {} })
       expect(store.getState().recipes[0]).to.deep.include({name: 'mushrooms'})
       let recipe = store.getState().recipes[0]
+      console.log("ingredientIds: " + recipe.name)
       expect(recipe.ingredientIds).to.include(1)
       expect(recipe.ingredientIds).to.include(2)
     })
