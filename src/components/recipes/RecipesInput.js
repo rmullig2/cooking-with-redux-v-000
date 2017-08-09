@@ -56,6 +56,12 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 function mapStateToProps(state){
+  console.log("RecipesInput.js")
+  var array_keys = new Array();
+  var array_values = new Array();
+  for (var key in state) { array_keys.push(key); array_values.push(state[key])}
+  console.log("state keys: " + array_keys)
+  console.log("state values: " + array_values)
   return { selectedIngredients: state.recipeForm.ingredientIds }
 } 
 
